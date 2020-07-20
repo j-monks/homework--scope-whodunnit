@@ -49,21 +49,41 @@
 // Second Verdict: Professor Plum
 // no function is being called and the second verdict is calling the let variable thats being assigned outside of any function
 
-let suspectOne = 'Miss Scarlet';
-let suspectTwo = 'Professor Plum';
-let suspectThree = 'Mrs. Peacock';
+// let suspectOne = 'Miss Scarlet';
+// let suspectTwo = 'Professor Plum';
+// let suspectThree = 'Mrs. Peacock';
 
-const declareAllSuspects = function() {
-  let suspectThree = 'Colonel Mustard';
-  return `The suspects are ${suspectOne}, ${suspectTwo}, ${suspectThree}.`;
-}
+// const declareAllSuspects = function() {
+//   let suspectThree = 'Colonel Mustard';
+//   return `The suspects are ${suspectOne}, ${suspectTwo}, ${suspectThree}.`;
+// }
 
-const suspects = declareAllSuspects();
-console.log(suspects);
-console.log(`Suspect three is ${suspectThree}.`);
+// const suspects = declareAllSuspects();
+// console.log(suspects);
+// console.log(`Suspect three is ${suspectThree}.`);
 
 // The suspects are Miss Scarlet, Professor Plum, Colonel Mustard.
 // Although suspectThree is available inside the declareAllSuspects function, it's changed inside which means when the function is called it will be changed
 // Suspect three is Mrs. Peacock
 // Suspect three remains the same when its not being called via the declareAllSuspects function because it's still at the global level as that value
 
+const scenario = {
+  murderer: 'Miss Scarlet',
+  room: 'Kitchen',
+  weapon: 'Candle Stick'
+};
+
+const changeWeapon = function(newWeapon) {
+  scenario.weapon = newWeapon;
+}
+
+const declareWeapon = function() {
+  return `The weapon is the ${scenario.weapon}.`;
+}
+
+changeWeapon('Revolver');
+const verdict = declareWeapon();
+console.log(verdict);
+
+// The weapon is the Revolver.
+// You can mutate an objects contents even though its a constant, so that's why we get the result Revolver
