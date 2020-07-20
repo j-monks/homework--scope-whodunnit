@@ -88,19 +88,48 @@
 // The weapon is the Revolver.
 // You can mutate an objects contents even though its a constant, so that's why we get the result Revolver
 
-let murderer = 'Colonel Mustard';
+// let murderer = 'Colonel Mustard';
+
+// const changeMurderer = function() {
+//   murderer = 'Mr. Green';
+
+//   const plotTwist = function() {
+//     murderer = 'Mrs. White';
+//   }
+
+//   plotTwist();
+// }
+
+// const declareMurderer = function () {
+//   return `The murderer is ${murderer}.`;
+// }
+
+// changeMurderer();
+// const verdict = declareMurderer();
+// console.log(verdict);
+
+// The murderer is Mrs. White.
+// Although the murderer changes to Mr. Green, the last thing to be called in the function is the plotTwitst function that changes the murderer to Mrs. White which overwrites the previous assignment
+
+let murderer = 'Professor Plum';
 
 const changeMurderer = function() {
   murderer = 'Mr. Green';
 
   const plotTwist = function() {
-    murderer = 'Mrs. White';
+    let murderer = 'Colonel Mustard';
+
+    const unexpectedOutcome = function() {
+      murderer = 'Miss Scarlet';
+    }
+
+    unexpectedOutcome();
   }
 
   plotTwist();
 }
 
-const declareMurderer = function () {
+const declareMurderer = function() {
   return `The murderer is ${murderer}.`;
 }
 
@@ -108,5 +137,6 @@ changeMurderer();
 const verdict = declareMurderer();
 console.log(verdict);
 
-// The murderer is Mrs. White.
-// Although the murderer changes to Mr. Green, the last thing to be called in the function is the plotTwitst function that changes the murderer to Mrs. White which overwrites the previous assignment
+// The murderer is Mr. Green.
+// In plotTwist the murderer is being reassigned to a new variable murderer limiting its scope to itself and unexpetedOutcome
+// at the top of changeMurderer the 'global level' murderer is being changed to Mr. Green and thats as far is what will be available
