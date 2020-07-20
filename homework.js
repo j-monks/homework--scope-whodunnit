@@ -63,27 +63,50 @@
 // console.log(`Suspect three is ${suspectThree}.`);
 
 // The suspects are Miss Scarlet, Professor Plum, Colonel Mustard.
-// Although suspectThree is available inside the declareAllSuspects function, it's changed inside which means when the function is called it will be changed
+// Although suspectThree is available inside the declareAllSuspects function, it's being reassigned inside which means this change won't be available outside the function
 // Suspect three is Mrs. Peacock
 // Suspect three remains the same when its not being called via the declareAllSuspects function because it's still at the global level as that value
 
-const scenario = {
-  murderer: 'Miss Scarlet',
-  room: 'Kitchen',
-  weapon: 'Candle Stick'
-};
+// const scenario = {
+//   murderer: 'Miss Scarlet',
+//   room: 'Kitchen',
+//   weapon: 'Candle Stick'
+// };
 
-const changeWeapon = function(newWeapon) {
-  scenario.weapon = newWeapon;
-}
+// const changeWeapon = function(newWeapon) {
+//   scenario.weapon = newWeapon;
+// }
 
-const declareWeapon = function() {
-  return `The weapon is the ${scenario.weapon}.`;
-}
+// const declareWeapon = function() {
+//   return `The weapon is the ${scenario.weapon}.`;
+// }
 
-changeWeapon('Revolver');
-const verdict = declareWeapon();
-console.log(verdict);
+// changeWeapon('Revolver');
+// const verdict = declareWeapon();
+// console.log(verdict);
 
 // The weapon is the Revolver.
 // You can mutate an objects contents even though its a constant, so that's why we get the result Revolver
+
+let murderer = 'Colonel Mustard';
+
+const changeMurderer = function() {
+  murderer = 'Mr. Green';
+
+  const plotTwist = function() {
+    murderer = 'Mrs. White';
+  }
+
+  plotTwist();
+}
+
+const declareMurderer = function () {
+  return `The murderer is ${murderer}.`;
+}
+
+changeMurderer();
+const verdict = declareMurderer();
+console.log(verdict);
+
+// The murderer is Mrs. White.
+// Although the murderer changes to Mr. Green, the last thing to be called in the function is the plotTwitst function that changes the murderer to Mrs. White which overwrites the previous assignment
