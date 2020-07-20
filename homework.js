@@ -141,43 +141,59 @@
 // In plotTwist the murderer is being reassigned to a new variable murderer limiting its scope to itself and unexpetedOutcome
 // at the top of changeMurderer the 'global level' murderer is being changed to Mr. Green and thats as far is what will be available, when the function is called
 
-const scenario = {
-  murderer: 'Mrs. Peacock',
-  room: 'Conservatory',
-  weapon: 'Lead Pipe'
-};
+// const scenario = {
+//   murderer: 'Mrs. Peacock',
+//   room: 'Conservatory',
+//   weapon: 'Lead Pipe'
+// };
 
-const changeScenario = function() {
-  scenario.murderer = 'Mrs. Peacock';
-  scenario.room = 'Dining Room';
+// const changeScenario = function() {
+//   scenario.murderer = 'Mrs. Peacock';
+//   scenario.room = 'Dining Room';
 
-  const plotTwist = function(room) {
-    if (scenario.room === room) {
-      scenario.murderer = 'Colonel Mustard';
-    }
+//   const plotTwist = function(room) {
+//     if (scenario.room === room) {
+//       scenario.murderer = 'Colonel Mustard';
+//     }
 
-    const unexpectedOutcome = function(murderer) {
-      if (scenario.murderer === murderer) {
-        scenario.weapon = 'Candle Stick';
-      }
-    }
+//     const unexpectedOutcome = function(murderer) {
+//       if (scenario.murderer === murderer) {
+//         scenario.weapon = 'Candle Stick';
+//       }
+//     }
 
-    unexpectedOutcome('Colonel Mustard');
-  }
+//     unexpectedOutcome('Colonel Mustard');
+//   }
 
-  plotTwist('Dining Room');
-}
+//   plotTwist('Dining Room');
+// }
 
-const declareWeapon = function() {
-  return `The weapon is ${scenario.weapon}.`
-}
+// const declareWeapon = function() {
+//   return `The weapon is ${scenario.weapon}.`
+// }
 
-changeScenario();
-const verdict = declareWeapon();
-console.log(verdict);
+// changeScenario();
+// const verdict = declareWeapon();
+// console.log(verdict);
 
 // The weapon is Candle Stick.
 // changeScenario is called and changes the murderer to Mrs. Peacock and the room to Dining Room
 // plotTwist is called and changes the murderer to Colonel Mustard because the room does equal Dining Room
 // the plotTwist function then goes onto calling unexpectedOutcome which then changes the weapon to a Candle Stick because the murder does equal Colonel Mustard
+
+let murderer = 'Professor Plum';
+
+if (murderer === 'Professor Plum') {
+  let murderer = 'Mrs. Peacock';
+}
+
+const declareMurderer = function() {
+  return `The murderer is ${murderer}.`;
+}
+
+const verdict = declareMurderer();
+console.log(verdict);
+
+// The murderer is Professor Plum.
+// the conditional is assigning a new variable murderer thats only available inside that block of code, so the murderer is still Professor Plum as it is declared at the 'global level'
 
